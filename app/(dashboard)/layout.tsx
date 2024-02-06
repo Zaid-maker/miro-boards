@@ -1,4 +1,5 @@
 import React from "react";
+import { Sidebar } from "./_components/sidebar";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -7,8 +8,8 @@ interface DashboardLayoutProps {
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
     <main className="h-full">
-      Sidebar
-      {children}
+      <Sidebar />
+      <div className="pl-[60px] h-full">{children}</div>
     </main>
   );
 };
