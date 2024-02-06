@@ -2,6 +2,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ConvexClientProvider } from "@/providers/convex-client-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,10 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ConvexClientProvider>
       <html lang="en">
         <body className={inter.className}>{children}</body>
       </html>
-    </ClerkProvider>
+    </ConvexClientProvider>
   );
 }
