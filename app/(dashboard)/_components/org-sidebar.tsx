@@ -1,7 +1,9 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { OrganizationSwitcher } from "@clerk/nextjs";
+import { LayoutDashboard } from "lucide-react";
 import { Poppins } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
@@ -37,10 +39,24 @@ export const OrgSidebar = () => {
               width: "100%",
               borderRadius: "8px",
               border: "1px solid #E5E7ED",
+              justifyContent: "space-between",
+              backgroundColor: "white",
             },
           },
         }}
       />
+      <div className="space-y-1 w-full">
+        <Button
+          asChild
+          size="lg"
+          className="font-normal justify-start px-2 w-full"
+        >
+          <Link href="/">
+            <LayoutDashboard className="h-4 w-4 mr-2" />
+            Team Boards
+          </Link>
+        </Button>
+      </div>
     </div>
   );
 };
