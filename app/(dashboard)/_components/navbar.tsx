@@ -1,3 +1,5 @@
+"use client";
+
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import { SearchInput } from "./search-input";
 
@@ -24,6 +26,7 @@ export const Navbar = () => {
                 width: "100%",
                 borderRadius: "8px",
                 border: "1px solid #E5E7EB",
+                justifyContent: "space-between",
                 backgroundColor: "white",
               },
             },
