@@ -1,3 +1,5 @@
+"use client";
+
 import { EmptyOrg } from "./_components/empty-org";
 
 const DashboardPage = () => {
