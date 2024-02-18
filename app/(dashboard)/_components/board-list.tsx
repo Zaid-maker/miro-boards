@@ -21,6 +21,16 @@ export const BoardList = ({ orgId, query }: BoardListProps) => {
     ...query,
   });
 
+  if (data === undefined) {
+    return (
+      <div>
+        <h2 className="text-3xl">
+          {query.favorites ? "Favorite boards" : "Team boards"}
+        </h2>
+      </div>
+    );
+  }
+
   if (!data?.length && query.search) {
     return <EmptySearch />;
   }
