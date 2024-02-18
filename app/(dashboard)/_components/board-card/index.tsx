@@ -1,3 +1,7 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 interface BoardCardProps {
@@ -11,6 +15,23 @@ interface BoardCardProps {
   isFavorite: boolean;
 }
 
-export const BoardCard = ({}: BoardCardProps) => {
-  return <div>BoardCard</div>;
+export const BoardCard = ({
+  id,
+  title,
+  authorId,
+  authorName,
+  createdAt,
+  imageUrl,
+  orgId,
+  isFavorite,
+}: BoardCardProps) => {
+  return (
+    <Link href={`/board/${id}`}>
+      <div>
+        <div>
+          <Image src={imageUrl} alt={title} fill className="object-fit" />
+        </div>
+      </div>
+    </Link>
+  );
 };
