@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { Footer } from "./footer";
 import { useAuth } from "@clerk/nextjs";
+import { formatDistanceToNow } from "date-fns";
 
 interface BoardCardProps {
   id: string;
@@ -30,7 +31,9 @@ export const BoardCard = ({
   const { userId } = useAuth();
 
   const authorLabel = userId === authorId ? "You" : authorName;
-  const createdAtLabel = true;
+  const createdAtLabel = formatDistanceToNow(createdAt, {
+    addSuffix: true,
+  });
 
   return (
     <Link href={`/board/${id}`}>
@@ -40,7 +43,14 @@ export const BoardCard = ({
           {/*<Overlay /> */}
           {/*<Actions /> */}
         </div>
-        <Footer isFavorite={isFavorite} title={title} />
+        <Footer
+          isFavorite={isFavorite}
+          title={title}
+          authorLabel={authorLabel}
+          createdAtLabel={createdAtLabel}
+          onClick={() => {}}
+          disabled={false}
+        />
       </div>
     </Link>
   );
