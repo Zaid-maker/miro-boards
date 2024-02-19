@@ -25,7 +25,7 @@ export const Footer = ({
     event.stopPropagation();
     event.preventDefault();
 
-    //onclick();
+    onClick();
   };
 
   return (
