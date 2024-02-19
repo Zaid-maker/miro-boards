@@ -67,7 +67,7 @@ export const BoardCard = ({
           authorLabel={authorLabel}
           createdAtLabel={createdAtLabel}
           onClick={toggleFavorite}
-          disabled={false}
+          disabled={pendingFavorite || pendingUnFavorite}
         />
       </div>
     </Link>
