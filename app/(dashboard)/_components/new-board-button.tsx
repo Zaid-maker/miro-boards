@@ -9,7 +9,7 @@ import { toast } from "sonner";
 
 interface NewBoardButtonProps {
   orgId: string;
-  disabled?: string;
+  disabled?: boolean;
 }
 
 export const NewBoardButton = ({ orgId, disabled }: NewBoardButtonProps) => {
