@@ -6,6 +6,7 @@ import React from "react";
 import { Footer } from "./footer";
 import { useAuth } from "@clerk/nextjs";
 import { formatDistanceToNow } from "date-fns";
+import { Overlay } from "./overlay";
 
 interface BoardCardProps {
   id: string;
@@ -40,7 +41,7 @@ export const BoardCard = ({
       <div className="group aspect-[100/127] border rounded-lg flex flex-col justify-between overflow-hidden">
         <div className="relative flex-1 bg-amber-50">
           <Image src={imageUrl} alt={title} fill className="object-fit" />
-          {/*<Overlay /> */}
+          <Overlay />
           {/*<Actions /> */}
         </div>
         <Footer
