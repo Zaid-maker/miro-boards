@@ -16,6 +16,8 @@ export const Footer = ({
   title,
   authorLabel,
   createdAtLabel,
+  onClick,
+  disabled,
 }: FooterProps) => {
   const handleClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -23,7 +25,7 @@ export const Footer = ({
     event.stopPropagation();
     event.preventDefault();
 
-    // onclick();
+    //onclick();
   };
 
   return (
@@ -33,11 +35,11 @@ export const Footer = ({
         {authorLabel}, {createdAtLabel}
       </p>
       <button
-        disabled
+        disabled={disabled}
         onClick={handleClick}
         className={cn(
           "opacity-0 group-hover:opacity-100 transition absolute top-3 right-3 text-muted-foreground hover:text-blue-600",
-          "cursor-not-allowed opacity-75"
+          disabled && "cursor-not-allowed opacity-75"
         )}
       >
         <Star
