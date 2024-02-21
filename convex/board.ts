@@ -128,7 +128,9 @@ export const unfavorite = mutation({
         const existingFavorite = await ctx.db
             .query("userFavorites")
             .withIndex("by_user_board", (q) =>
-                q.eq("userId", userId).eq("boardId", board._id)
+                q
+                    .eq("userId", userId)
+                    .eq("boardId", board._id)
             )
             .unique();
 
