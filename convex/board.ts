@@ -1,5 +1,5 @@
 import { v } from "convex/values";
-import { mutation } from "./_generated/server";
+import { mutation, query } from "./_generated/server";
 
 const images = [
     "/placeholders/1.svg",
@@ -56,7 +56,9 @@ export const remove = mutation({
         const existingFavorite = await ctx.db
             .query("userFavorites")
             .withIndex("by_user_board", (q) =>
-                q.eq("userId", userId).eq("boardId", args.id)
+                q
+                    .eq("userId", userId)
+                    .eq("boardId", args.id)
             )
             .unique();
 
@@ -143,3 +145,12 @@ export const unfavorite = mutation({
         return board;
     },
 });
+
+export const get = query({
+    args: { id: v.id('boards') },
+    handler: async (ctx, args) => {
+        const board = ctx.db.get(args.id)
+
+        return board
+    },
+})
