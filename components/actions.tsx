@@ -65,8 +65,8 @@ export const Actions = ({
         <ConfirmDialog
           header="Delete board?"
           description="This will delete the board and all of its contents."
-          disabled={false}
-          onConfirm={() => {}}
+          disabled={pending}
+          onConfirm={onDelete}
         >
           <Button
             variant="ghost"
