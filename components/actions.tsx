@@ -14,6 +14,7 @@ import React from "react";
 import { toast } from "sonner";
 import { ConfirmDialog } from "./confirm-dialog";
 import { Button } from "./ui/button";
+import { useRenameModal } from "@/store/use-rename-modal";
 
 interface ActionsProps {
   children: React.ReactNode;
@@ -30,6 +31,7 @@ export const Actions = ({
   id,
   title,
 }: ActionsProps) => {
+  const { onOpen } = useRenameModal();
   const { mutate, pending } = useApiMutation(api.board.remove);
 
   const onCopyLink = () => {
@@ -58,7 +60,10 @@ export const Actions = ({
           <Link2 className="h-4 w-4 mr-2" />
           Copy board link
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => {}} className="p-3 cursor-pointer">
+        <DropdownMenuItem
+          onClick={() => onOpen(id, title)}
+          className="p-3 cursor-pointer"
+        >
           <Pencil className="h-4 w-4 mr-2" />
           Rename
         </DropdownMenuItem>
