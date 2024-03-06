@@ -13,6 +13,7 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x, 20.x]
+        os: ['ubuntu-latest', 'windows-latest']
 
     steps:
       - uses: actions/checkout@v4
@@ -21,6 +22,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+      - name: Install NPM 9
+        run: npm i -g npm@9
       - run: npm ci
       - name: Build
         run: npm run build
