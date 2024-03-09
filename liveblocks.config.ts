@@ -13,9 +13,13 @@ const client = createClient({
   authEndpoint: "/api/liveblocks-auth",
   async resolveUsers({ userIds }) {
     // ...
+
+    return []
   },
   async resolveMentionSuggestions({ text }) {
     // ...
+
+    return []
   },
 });
 
