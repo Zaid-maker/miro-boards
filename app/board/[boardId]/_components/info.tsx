@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
@@ -53,8 +55,10 @@ export const Info = ({ boardId }: InfoProps) => {
   );
 };
 
-Info.Skeleton = function InfoSkeleton() {
+export const InfoSkeleton = () => {
   return (
-    <div className="absolute top-2 left-2 bg-white rounded-md px-1.5 h-12 flex items-center shadow-md w-[300px]" />
+    <div 
+      className="absolute top-2 left-2 bg-white rounded-md px-1.5 h-12 flex items-center shadow-md w-[300px]"
+    />
   );
 };
