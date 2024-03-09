@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { cn } from "@/lib/utils";
+import { useRenameModal } from "@/store/use-rename-modal";
 import { useQuery } from "convex/react";
+import { Menu } from "lucide-react";
 import { Poppins } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,9 +26,13 @@ const TabSeparator = () => {
 };
 
 export const Info = ({ boardId }: InfoProps) => {
+  const { onOpen } = useRenameModal();
+
   const data = useQuery(api.board.get, {
     id: boardId as Id<"boards">,
   });
+
+  if (!data) return <InfoSkeleton />;
 
   return (
     <div className="absolute top-2 left-2 bg-white rounded-md px-1.5 h-12 flex items-center shadow-md">
@@ -47,18 +53,22 @@ export const Info = ({ boardId }: InfoProps) => {
       <Button
         variant="board"
         className="text-base font-normal px-2"
-        onClick={() => {}}
+        onClick={() => onOpen(data._id, data.title)}
       >
-        Title
+        {data.title}
       </Button>
+      <TabSeparator />
+      <div>
+        <Button size="icon" variant="board">
+          <Menu />
+        </Button>
+      </div>
     </div>
   );
 };
 
 export const InfoSkeleton = () => {
   return (
-    <div 
-      className="absolute top-2 left-2 bg-white rounded-md px-1.5 h-12 flex items-center shadow-md w-[300px]"
-    />
+    <div className="absolute top-2 left-2 bg-white rounded-md px-1.5 h-12 flex items-center shadow-md w-[300px]" />
   );
 };
