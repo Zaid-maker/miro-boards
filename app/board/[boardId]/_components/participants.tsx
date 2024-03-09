@@ -3,6 +3,7 @@
 import { useOthers, useSelf } from "@/liveblocks.config";
 import React from "react";
 import { UserAvatar } from "./user-avatar";
+import { connectionIdToColor } from "@/lib/utils";
 
 const MAX_SHOWN_USERS = 2;
 
@@ -21,13 +22,14 @@ export const Participants = () => {
               src={info?.picture}
               name={info?.name}
               fallback={info?.name?.[0] || "T"}
+              borderColor={connectionIdToColor(connectionId)}
             />
           );
         })}
 
         {currentUser && (
           <UserAvatar
-            // borderColor={connectionIdToColor(currentUser.connectionId)}
+            borderColor={connectionIdToColor(currentUser.connectionId)}
             src={currentUser.info?.picture}
             name={`${currentUser.info?.name} (You)`}
             fallback={currentUser.info?.name?.[0]}
