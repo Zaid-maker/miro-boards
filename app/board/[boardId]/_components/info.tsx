@@ -1,5 +1,6 @@
 "use client";
 
+import { Actions } from "@/components/actions";
 import { Button } from "@/components/ui/button";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
@@ -58,11 +59,13 @@ export const Info = ({ boardId }: InfoProps) => {
         {data.title}
       </Button>
       <TabSeparator />
-      <div>
-        <Button size="icon" variant="board">
-          <Menu />
-        </Button>
-      </div>
+      <Actions id={data._id} title={data.title} side="bottom" sideOffset={10}>
+        <div>
+          <Button size="icon" variant="board">
+            <Menu />
+          </Button>
+        </div>
+      </Actions>
     </div>
   );
 };
